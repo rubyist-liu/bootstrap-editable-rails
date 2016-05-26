@@ -14,7 +14,13 @@ See http://vitalets.github.com/x-editable
 
 Add this line to your application's Gemfile:
 
-    gem 'bootstrap-editable-rails'
+if you use bootstrap 2
+
+    gem 'bootstrap-editable-rails' ~> "0.0.9"
+
+if you use bootstrap 3
+
+    gem 'bootstrap-editable-rails' ~> "0.1.0"
 
 And then execute:
 
@@ -34,6 +40,7 @@ Write the top of `app/assets/javascripts/application.js` like this:
 //= require bootstrap-editable-rails
 //= require_tree .
 ```
+
 
 and need to load `bootstrap-editable.css` at the place where you like.
 
