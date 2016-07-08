@@ -7519,6 +7519,7 @@ wysihtml5.Commands = Base.extend(
   wysihtml5.commands.clear = {  
     exec: function(composer, command) {
       composer.doc.execCommand('removeFormat');
+      composer.doc.execCommand('removeClass');
     }
   }
   wysihtml5.commands.insertOrderedList = {
