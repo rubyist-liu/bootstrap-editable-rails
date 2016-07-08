@@ -7517,10 +7517,11 @@ wysihtml5.Commands = Base.extend(
   //
   //
   wysihtml5.commands.clear = {  
-    var doc           = composer.doc,
-        selectedNode  = composer.selection.getSelectedNode()
-    console.log(doc,selection)
-      
+    exec: function(composer, command) {
+      var doc           = composer.doc,
+          selectedNode  = composer.selection.getSelectedNode()
+      console.log(doc,selection)
+    }
   }
   wysihtml5.commands.insertOrderedList = {
     exec: function(composer, command) {
