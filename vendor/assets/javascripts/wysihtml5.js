@@ -7492,7 +7492,36 @@ wysihtml5.Commands = Base.extend(
   };
 })(wysihtml5);(function(wysihtml5) {
   var undef;
-  
+    //
+  // function _removeFormat(composer, anchors) {
+  //   var length  = anchors.length,
+  //       i       = 0,
+  //       anchor,
+  //       codeElement,
+  //       textContent;
+  //   for (; i<length; i++) {
+  //     anchor      = anchors[i];
+  //     codeElement = dom.getParentElement(anchor, { nodeName: "code" });
+  //     textContent = dom.getTextContent(anchor);
+  //
+  //     // if <a> contains url-like text content, rename it to <code> to prevent re-autolinking
+  //     // else replace <a> with its childNodes
+  //     if (textContent.match(dom.autoLink.URL_REG_EXP) && !codeElement) {
+  //       // <code> element is used to prevent later auto-linking of the content
+  //       codeElement = dom.renameElement(anchor, "code");
+  //     } else {
+  //       dom.replaceWithChildNodes(anchor);
+  //     }
+  //   }
+  // }
+  //
+  //
+  wysihtml5.commands.clear = {  
+    var doc           = composer.doc,
+        selectedNode  = composer.selection.getSelectedNode()
+    console.log(doc,selection)
+      
+  }
   wysihtml5.commands.insertOrderedList = {
     exec: function(composer, command) {
       var doc           = composer.doc,
@@ -9695,8 +9724,7 @@ $(function(){
               "<div class='btn-group'>" +
                 "<a class='btn btn-default" + size + "' data-wysihtml5-command='insertUnorderedList' title='" + locale.lists.unordered + "' tabindex='-1'><i class='fa fa-list'></i></a>" +
                 "<a class='btn btn-default" + size + "' data-wysihtml5-command='insertOrderedList' title='" + locale.lists.ordered + "' tabindex='-1'><i class='fa fa-th-list'></i></a>" +
-                "<a class='btn btn-default" + size + "' data-wysihtml5-command='Outdent' title='" + locale.lists.outdent + "' tabindex='-1'><i class='fa fa-indent'></i></a>" +
-                "<a class='btn btn-default" + size + "' data-wysihtml5-command='Indent' title='" + locale.lists.indent + "' tabindex='-1'><i class='fa fa-outdent'></i></a>" +
+                "<a class='btn btn-default" + size + "' data-wysihtml5-command='clear' title='ban' tabindex='-1'><i class='fa fa-ban'></i></a>" +
               "</div>" +
             "</li>";
         },
