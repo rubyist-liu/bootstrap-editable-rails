@@ -5761,8 +5761,8 @@ wysihtml5.quirks.cleanPastedHTML = (function() {
           return;
         }
 
-        // var element = composer.selection.getSelectedNode();
-        // clearIfNecessary(element, composer.element);
+        var element = composer.selection.getSelectedNode();
+        clearIfNecessary(element, composer.element);
       });
     };
   })();
@@ -7794,7 +7794,7 @@ wysihtml5.Commands = Base.extend(
         
         lastKey = keyCode;
         
-        if (keyCode === DELETE_KEY) {
+        if (keyCode === BACKSPACE_KEY || keyCode === DELETE_KEY) {
           that.transact();
         }
       });
@@ -7826,15 +7826,15 @@ wysihtml5.Commands = Base.extend(
             doc.execCommand("undo", false, null);
           });
 
-          // interval = setInterval(function() {
-          //   if (doc.getElementById("_wysihtml5-redo")) {
-          //     cleanUp();
-          //     that.redo();
-          //   } else if (!doc.getElementById("_wysihtml5-undo")) {
-          //     cleanUp();
-          //     that.undo();
-          //   }
-          // }, 400);
+          interval = setInterval(function() {
+            if (doc.getElementById("_wysihtml5-redo")) {
+              cleanUp();
+              that.redo();
+            } else if (!doc.getElementById("_wysihtml5-undo")) {
+              cleanUp();
+              that.undo();
+            }
+          }, 400);
 
           if (!observed) {
             observed = true;
@@ -8566,7 +8566,7 @@ wysihtml5.views.View = Base.extend(
     // --------- neword event ---------
     dom.observe(element, "keyup", function(event) {
       var keyCode = event.keyCode;
-      if (keyCode === wysihtml5.SPACE_KEY || keyCode === wysihtml5.ENTER_KEY) {
+      if (keyCode === wysihtml5.ENTER_KEY) {
         that.parent.fire("newword:composer");
       }
     });
@@ -8698,7 +8698,7 @@ wysihtml5.views.View = Base.extend(
           that          = this,
           form          = this.textarea.element.form,
           startInterval = function() {
-            // interval = setInterval(function() { that.fromComposerToTextarea(); }, INTERVAL);
+            interval = setInterval(function() { that.fromComposerToTextarea(); }, INTERVAL);
           },
           stopInterval  = function() {
             clearInterval(interval);
@@ -8872,7 +8872,7 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
           callbackWrapper(event);
         }
         if (keyCode === wysihtml5.ESCAPE_KEY) {
-          that.hide();
+          // that.hide();
         }
       });
 
@@ -8967,7 +8967,7 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
       this._observe();
       this._interpolate();
       if (elementToChange) {
-        // this.interval = setInterval(function() { that._interpolate(true); }, 500);
+        this.interval = setInterval(function() { that._interpolate(true); }, 500);
       }
       dom.addClass(this.link, CLASS_NAME_OPENED);
       this.container.style.display = "";
@@ -9259,7 +9259,7 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
       editor.observe("focus:composer", function() {
         that.bookmark = null;
         clearInterval(that.interval);
-        // that.interval = setInterval(function() { that._updateLinkStates(); }, 500);
+        that.interval = setInterval(function() { that._updateLinkStates(); }, 500);
       });
 
       editor.observe("blur:composer", function() {
