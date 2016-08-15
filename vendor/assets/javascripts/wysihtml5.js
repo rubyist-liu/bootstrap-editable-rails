@@ -5761,8 +5761,8 @@ wysihtml5.quirks.cleanPastedHTML = (function() {
           return;
         }
 
-        var element = composer.selection.getSelectedNode();
-        clearIfNecessary(element, composer.element);
+        // var element = composer.selection.getSelectedNode();
+        // clearIfNecessary(element, composer.element);
       });
     };
   })();
