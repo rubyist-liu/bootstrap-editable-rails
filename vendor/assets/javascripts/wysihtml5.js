@@ -8487,13 +8487,13 @@ wysihtml5.views.View = Base.extend(
       that.parent.fire("destroy:composer");
     });
 
-    // DOMNodeRemoved event is not supported in IE 8
-    // var domNodeRemovedInterval = setInterval(function() {
-    //   if (!dom.contains(document.documentElement, iframe)) {
-    //     clearInterval(domNodeRemovedInterval);
-    //     that.parent.fire("destroy:composer");
-    //   }
-    // }, 250);
+    DOMNodeRemoved event is not supported in IE 8
+    var domNodeRemovedInterval = setInterval(function() {
+      if (!dom.contains(document.documentElement, iframe)) {
+        clearInterval(domNodeRemovedInterval);
+        that.parent.fire("destroy:composer");
+      }
+    }, 250);
 
 
     // --------- Focus & blur logic ---------
@@ -8698,7 +8698,7 @@ wysihtml5.views.View = Base.extend(
           that          = this,
           form          = this.textarea.element.form,
           startInterval = function() {
-            // interval = setInterval(function() { that.fromComposerToTextarea(); }, INTERVAL);
+            interval = setInterval(function() { that.fromComposerToTextarea(); }, INTERVAL);
           },
           stopInterval  = function() {
             clearInterval(interval);
@@ -8967,7 +8967,7 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
       this._observe();
       this._interpolate();
       if (elementToChange) {
-        // this.interval = setInterval(function() { that._interpolate(true); }, 500);
+        this.interval = setInterval(function() { that._interpolate(true); }, 500);
       }
       dom.addClass(this.link, CLASS_NAME_OPENED);
       this.container.style.display = "";
@@ -9259,7 +9259,7 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
       editor.observe("focus:composer", function() {
         that.bookmark = null;
         clearInterval(that.interval);
-        // that.interval = setInterval(function() { that._updateLinkStates(); }, 500);
+        that.interval = setInterval(function() { that._updateLinkStates(); }, 500);
       });
 
       editor.observe("blur:composer", function() {
