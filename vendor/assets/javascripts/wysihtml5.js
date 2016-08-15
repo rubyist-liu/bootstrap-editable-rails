@@ -7826,15 +7826,15 @@ wysihtml5.Commands = Base.extend(
             doc.execCommand("undo", false, null);
           });
 
-          interval = setInterval(function() {
-            if (doc.getElementById("_wysihtml5-redo")) {
-              cleanUp();
-              that.redo();
-            } else if (!doc.getElementById("_wysihtml5-undo")) {
-              cleanUp();
-              that.undo();
-            }
-          }, 400);
+          // interval = setInterval(function() {
+          //   if (doc.getElementById("_wysihtml5-redo")) {
+          //     cleanUp();
+          //     that.redo();
+          //   } else if (!doc.getElementById("_wysihtml5-undo")) {
+          //     cleanUp();
+          //     that.undo();
+          //   }
+          // }, 400);
 
           if (!observed) {
             observed = true;
@@ -8488,12 +8488,12 @@ wysihtml5.views.View = Base.extend(
     });
 
     // DOMNodeRemoved event is not supported in IE 8
-    var domNodeRemovedInterval = setInterval(function() {
-      if (!dom.contains(document.documentElement, iframe)) {
-        clearInterval(domNodeRemovedInterval);
-        that.parent.fire("destroy:composer");
-      }
-    }, 250);
+    // var domNodeRemovedInterval = setInterval(function() {
+    //   if (!dom.contains(document.documentElement, iframe)) {
+    //     clearInterval(domNodeRemovedInterval);
+    //     that.parent.fire("destroy:composer");
+    //   }
+    // }, 250);
 
 
     // --------- Focus & blur logic ---------
@@ -8698,7 +8698,7 @@ wysihtml5.views.View = Base.extend(
           that          = this,
           form          = this.textarea.element.form,
           startInterval = function() {
-            interval = setInterval(function() { that.fromComposerToTextarea(); }, INTERVAL);
+            // interval = setInterval(function() { that.fromComposerToTextarea(); }, INTERVAL);
           },
           stopInterval  = function() {
             clearInterval(interval);
@@ -8967,7 +8967,7 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
       this._observe();
       this._interpolate();
       if (elementToChange) {
-        this.interval = setInterval(function() { that._interpolate(true); }, 500);
+        // this.interval = setInterval(function() { that._interpolate(true); }, 500);
       }
       dom.addClass(this.link, CLASS_NAME_OPENED);
       this.container.style.display = "";
@@ -9259,7 +9259,7 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
       editor.observe("focus:composer", function() {
         that.bookmark = null;
         clearInterval(that.interval);
-        that.interval = setInterval(function() { that._updateLinkStates(); }, 500);
+        // that.interval = setInterval(function() { that._updateLinkStates(); }, 500);
       });
 
       editor.observe("blur:composer", function() {
@@ -9784,7 +9784,7 @@ $(function(){
             var size = (options && options.size) ? ' btn-'+options.size : '';
             return "<li class='dropdown'>" +
               "<a class='btn btn-default dropdown-toggle" + size + "' data-toggle='dropdown' href='#' tabindex='-1'>" +
-                "<span class='current-color'>" + locale.colours.black + "</span>&nbsp;<b class='caret'></b>" +
+                "<span class='current-color'>原色</span>&nbsp;<b class='caret'></b>" +
               "</a>" +
               "<ul class='dropdown-menu'>" +
                 "<li><div class='wysihtml5-colors' data-wysihtml5-command-value='clear'></div><a class='wysihtml5-colors-title' data-wysihtml5-command='foreColor' data-wysihtml5-command-value='black'>" + locale.colours.clear + "</a></li>" +
@@ -10173,7 +10173,7 @@ $(function(){
                 edit: "Edit HTML"
             },
             colours: {
-                black: "Black",
+                clear: "Clear",
                 silver: "Silver",
                 gray: "Grey",
                 maroon: "Maroon",
