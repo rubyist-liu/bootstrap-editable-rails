@@ -7794,7 +7794,7 @@ wysihtml5.Commands = Base.extend(
         
         lastKey = keyCode;
         
-        if (keyCode === BACKSPACE_KEY || keyCode === DELETE_KEY) {
+        if (keyCode === DELETE_KEY) {
           that.transact();
         }
       });
