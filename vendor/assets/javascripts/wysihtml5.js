@@ -8563,7 +8563,7 @@ wysihtml5.views.View = Base.extend(
       }
     });
 
-    // --------- neword event ---------
+    // --------- neword event ------+---
     dom.observe(element, "keyup", function(event) {
       var keyCode = event.keyCode;
       if (keyCode === wysihtml5.ENTER_KEY) {
