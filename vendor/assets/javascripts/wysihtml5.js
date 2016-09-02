@@ -4295,7 +4295,6 @@ wysihtml5.dom.copyAttributes = function(attributesToCopy) {
             property;
         for (; i<length; i++) {
           property = stylesToCopy[i];
-          if (property=='height') continue;
           cssText += property + ":" + dom.getStyle(property).from(element) + ";";
         }
         
