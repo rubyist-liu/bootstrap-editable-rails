@@ -4300,8 +4300,13 @@ wysihtml5.dom.copyAttributes = function(attributesToCopy) {
         
         return {
           to: function(element) {
-            if (cssText.match(/height/)) {
-              console.log('haha')
+            var height_r = /\;height\:/
+            if (cssText.match(height_r) && element) {
+              list = cssText.split(height_r)
+              height = parseInt(list[1],10)
+              if (element.offsetHeight > height) {
+                cssText = list[0] + 'height:'+element.offsetHeight+'px;'
+              }
             }
             dom.setStyles(cssText).on(element);
             return { andTo: arguments.callee };
