@@ -7838,9 +7838,6 @@ wysihtml5.Commands = Base.extend(
             if (doc.getElementById("_wysihtml5-redo")) {
               cleanUp();
               that.redo();
-            } else if (!doc.getElementById("_wysihtml5-undo")) {
-              cleanUp();
-              that.undo();
             }
           }, 400);
 
