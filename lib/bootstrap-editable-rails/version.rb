@@ -1,7 +1,7 @@
 module Bootstrap
   module Editable
     module Rails
-      VERSION = "0.1.9"
+      VERSION = "0.2.0"
     end
   end
 end
